@@ -1,7 +1,6 @@
 package com.indraazimi.helloworld
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.indraazimi.helloworld.databinding.ActivityMainBinding
 
@@ -14,7 +13,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Log.d("MainActivity", "Jumlah data: ${getData().size}")
+        binding.recylerView.adapter = MainAdapter(getData())
+        binding.recylerView.setHasFixedSize(true)
     }
 
     private fun getData(): List<Hewan> {
