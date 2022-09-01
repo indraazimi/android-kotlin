@@ -1,10 +1,18 @@
 package com.indraazimi.helloworld
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
 
-    val data = initData()
+    private val data = MutableLiveData<List<Hewan>>()
+
+    init {
+        data.value = initData()
+    }
+
+    fun getData(): LiveData<List<Hewan>> = data
 
     private fun initData(): List<Hewan> {
         return listOf(

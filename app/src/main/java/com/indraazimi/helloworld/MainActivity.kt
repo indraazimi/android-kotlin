@@ -22,7 +22,13 @@ class MainActivity : AppCompatActivity() {
 
         val divider = DividerItemDecoration(this, RecyclerView.VERTICAL)
         binding.recylerView.addItemDecoration(divider)
-        binding.recylerView.adapter = MainAdapter(viewModel.data)
+
+        val adapter = MainAdapter()
+        binding.recylerView.adapter = adapter
         binding.recylerView.setHasFixedSize(true)
+
+        viewModel.getData().observe(this) {
+            adapter.updateData(it)
+        }
     }
 }
