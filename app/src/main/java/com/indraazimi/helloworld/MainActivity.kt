@@ -2,6 +2,8 @@ package com.indraazimi.helloworld
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.indraazimi.helloworld.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val divider = DividerItemDecoration(this, RecyclerView.VERTICAL)
+        binding.recylerView.addItemDecoration(divider)
         binding.recylerView.adapter = MainAdapter(getData())
         binding.recylerView.setHasFixedSize(true)
     }
