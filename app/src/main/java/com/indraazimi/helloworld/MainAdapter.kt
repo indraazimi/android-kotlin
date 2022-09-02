@@ -1,10 +1,12 @@
 package com.indraazimi.helloworld
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.indraazimi.helloworld.DetailActivity.Companion.KEY_DIARY_ID
 import com.indraazimi.helloworld.database.Diary
 import com.indraazimi.helloworld.databinding.ListItemBinding
 
@@ -27,6 +29,12 @@ class MainAdapter : ListAdapter<Diary, MainAdapter.ViewHolder>(DIFF_CALLBACK) {
         fun bind(diary: Diary) = with(binding) {
             judulTextView.text = diary.judul
             diaryTextView.text = diary.diary
+
+            root.setOnClickListener {
+                val intent = Intent(root.context, DetailActivity::class.java)
+                intent.putExtra(KEY_DIARY_ID, diary.id)
+                root.context.startActivity(intent)
+            }
         }
     }
 

@@ -15,6 +15,14 @@ class DetailViewModel(private val db: DiaryDao) : ViewModel() {
             db.insert(diary)
         }
     }
+
+    fun updateDiary(diary: Diary) {
+        viewModelScope.launch(Dispatchers.IO) {
+            db.update(diary)
+        }
+    }
+
+    fun getDiary(id: Int) = db.getDiary(id)
 }
 
 class DetailViewModelFactory(private val db: DiaryDao) : ViewModelProvider.Factory {
