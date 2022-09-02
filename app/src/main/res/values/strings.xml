@@ -5,4 +5,6 @@
     <string name="judul">Judul</string>
     <string name="isi_diary">Isi diary</string>
     <string name="simpan">Simpan</string>
+    <string name="judul_harus_diisi">Judul harus diisi</string>
+    <string name="diary_harus_diisi">Diary harus diisi</string>
 </resources>

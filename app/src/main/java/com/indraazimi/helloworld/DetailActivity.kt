@@ -1,8 +1,10 @@
 package com.indraazimi.helloworld
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.indraazimi.helloworld.database.Diary
@@ -37,10 +39,20 @@ class DetailActivity : AppCompatActivity() {
         }
         return false
     }
-    
+
     private fun insertDiary() {
         val judul = binding.judulEditText.text.toString()
+        if (TextUtils.isEmpty(judul)) {
+            Toast.makeText(this, R.string.judul_harus_diisi, Toast.LENGTH_LONG).show()
+            return
+        }
+        
         val diary = binding.diaryEditText.text.toString()
+        if (TextUtils.isEmpty(diary)) {
+            Toast.makeText(this, R.string.diary_harus_diisi, Toast.LENGTH_LONG).show()
+            return
+        }
+
         val data = Diary(judul = judul, diary = diary)
         viewModel.insertDiary(data)
         finish()
