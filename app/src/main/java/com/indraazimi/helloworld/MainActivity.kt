@@ -2,6 +2,7 @@ package com.indraazimi.helloworld
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -37,6 +38,10 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.setHasFixedSize(true)
 
         viewModel.data.observe(this) {
+            binding.emptyTextView.visibility = if (it.isEmpty())
+                View.VISIBLE
+            else
+                View.GONE
             adapter.submitList(it)
         }
     }

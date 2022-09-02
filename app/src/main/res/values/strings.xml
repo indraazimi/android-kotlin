@@ -9,4 +9,5 @@
     <string name="diary_harus_diisi">Diary harus diisi</string>
     <string name="ubah_diary">Ubah Diary</string>
     <string name="hapus">Hapus</string>
+    <string name="belum_ada_data">Belum ada data</string>
 </resources>
